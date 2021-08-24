@@ -18,6 +18,46 @@ class Solution {
     }
 }
 
+// optimized
+public int numIdenticalPairs(int[] A) {
+    int result = 0;
+    int[] count = new int[101];
+    for (int num : nums) {
+        result += count[num]++;
+    }
+    return result;
+}
+
+/*
+count the occurrence of the same elements.
+For each new element a,
+there will be more count[a] pairs,
+with A[i] == A[j] and i < j
+*/
+
+/*
+first iteration
+nums = [1, 1, 2, 1]
+map = {1: 1}
+
+second iteration
+temp = 1
+count = count + 1
+      = 0 + 1
+      = 1
+
+third iteration
+map = {1:2, 2:1}
+
+fourth iteration
+count = 1
+temp = 2
+count = 1 + 2
+      = 3
+
+return 3;
+*/
+
 // We are esentially tasked with finding the number of repeats after first occurence of each number.
 // Here's a way to visualize it. If I have [1,1], then there is only 1 "good pair,"
 // which is the first and second 1. (0+1 = 1)
