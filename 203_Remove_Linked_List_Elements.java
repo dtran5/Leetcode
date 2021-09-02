@@ -1,0 +1,18 @@
+class Solution {
+    public ListNode removeElements(ListNode head, int val) {
+        // if the head is the val we want to remove, we cant get rid of the reference so
+        while (head != null && head.val == val) {
+            head = head.next;
+        }
+
+        ListNode currentNode = head;
+        while (currentNode != null && currentNode.next != null) {
+            if (currentNode.next.val == val) {
+                currentNode.next = currentNode.next.next;
+            } else {
+                currentNode = currentNode.next;
+            }
+        }
+        return head;
+    }
+}
