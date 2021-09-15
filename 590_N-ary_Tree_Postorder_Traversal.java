@@ -19,13 +19,18 @@ class Solution {
     }
 }
 
-// ITERATIVE
+
 class Solution {
     public List<Integer> postorder(Node root) {
         // stack stores our tree node references
         LinkedList<Node> stack = new LinkedList<>();
         // stores our values from each node
         LinkedList<Integer> output_arr = new LinkedList<>();
+
+        if (root == null) {
+            return output_arr;
+        }
+
         // add our root into the stack
         stack.add(root);
 
