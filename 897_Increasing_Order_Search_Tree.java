@@ -17,3 +17,37 @@ class Solution {
         inorder(node.right, vals);
     }
 }
+
+class Solution {
+    public TreeNode increasingBST(TreeNode root) {
+        List<Integer> list = new ArrayList();
+
+        inOrderTraversal(root, list);
+
+        // create dummy node
+        TreeNode answer = new TreeNode();
+        // create current node to "walk down"
+        TreeNode current = answer;
+
+        // for every value in our list
+        // set the current node's right equal to that value
+        // move current node to the next node on the right
+        for (int value : list) {
+            current.right = new TreeNode(value);
+            current = current.right;
+        }
+
+        return answer.right;
+    }
+
+    private void inOrderTraversal(TreeNode node, List<Integer> list) {
+        if(node == null) {
+            return;
+        }
+        // add each left node to the list
+        inOrderTraversal(node.left, list);
+        list.add(node.val);
+        // add each right node to the list
+        inOrderTraversal(node.right, list);
+    }
+}
